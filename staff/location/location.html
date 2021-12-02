@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title> Listoa </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../../common/css/picnic.css">
+        <link rel="stylesheet" href="../../common/css/styles.css">
+    </head>
+    <body>
+
+      
+
+
+        <div class="container">
+            <!-- Navigation Bar -->
+            <nav class="test">
+    
+                <!-- Logo -->
+                <a class="brand" href="">
+                    <img class="logo" src="../../common/img/logo.jpeg" width="100px;" >
+                </a> 
+            
+                <!-- Links -->
+                <div class="menu-center menu">
+                    <a href="base.html"> Home </a> 
+                    <a href="shop.html"> Shop </a>
+                </div>
+                
+                <div class="menu-icons menu" id="menuIcons">
+                   
+                </div>
+
+    
+            </nav>
+
+            <main>
+
+                <h2> Add Location </h2>
+
+                <label> Location Name </label>
+                <input type="text" id="txtLocationName"> 
+
+                <label> Location Address</label>
+                <input id="txtLocationAddress" type="text" size="50">
+
+                <span style="display: none;" id="lblLocationLat"> </span>
+                <span style="display: none;" id="lblLocationLng"> </span>
+
+                <button id="btnAddLocation"> Add Location </button>
+                
+                <h2> Locations Map </h2>
+                <div id="map" style="height: 500px; width: auto;"> </div>
+
+
+            </main>
+
+        </div>
+
+        <footer class="footer">
+            Copyright &copy; Listoa 2021
+        </footer>
+
+        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByMxiZDfuouP-xbbxypl3Tj-MtnbJLf9E&libraries=places"></script>
+        <script src="../../common/js/db.js"></script>
+        <script src="location.js"> </script>
+    </body>
+</html>

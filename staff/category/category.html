@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title> Listoa </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../../common/css/picnic.css">
+        <link rel="stylesheet" href="../../common/css/styles.css">
+
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <!-- Navigation Bar -->
+            <nav class="test">
+    
+                <!-- Logo -->
+                <a class="brand" href="">
+                    <img class="logo" src="../../common/img/logo.jpeg" width="100px;" >
+                </a> 
+            
+                <!-- Links -->
+                <div class="menu-center menu">
+                    <a href="base.html"> Home </a> 
+                    <a href="shop.html"> Shop </a>
+                </div>
+                
+                <div class="menu-icons menu" id="menuIcons">
+                   
+                </div>
+
+    
+            </nav>
+
+            <main>
+                <div class="flex two">
+
+                    <div>
+                        <h2> Add a Category </h2>
+
+                        <label> Category </label>
+                        <input type="text" id="txtCategory">  
+
+                        <label> Category Description </label>
+                        <textarea id="txtCategoryDescription"></textarea>
+                        
+                        <button id="btnCategory"> Add Category </button>
+                    </div>
+
+                    <div>
+                        <h2> Add a Sub Category </h2>
+
+                        <label> Category </label>
+                        <select id="selCategory">
+
+                        </select>
+
+                        <label> Sub Category </label>
+                        <input type="text" id="txtSubCategory"></textarea>  
+
+                        <label> Sub Category Description </label>
+                        <textarea id="txtSubCategoryDescription"></textarea>
+
+                        <button id="btnAddSubCategory"> Add Sub Category </button>
+
+                    </div>
+
+                </div>
+
+                <h2> Categories </h2>
+                <table>
+                    <thead> 
+                        <tr> 
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th> Sub Category </th>
+                            <th> Sub Category Description </th> 
+                        </tr>
+                    </thead>
+                    <tbody id="tblCategories">
+                    </tbody>
+                </table>
+                    
+            </main>
+
+        </div>
+
+        <footer class="footer">
+            Copyright &copy; Listoa 2021
+        </footer>
+
+        <script src="../../common/js/jquery.js"></script>
+        <script src="../../common/js/db.js"></script>
+        <script src="category.js" defer> </script>
+
+    </body>
+</html>

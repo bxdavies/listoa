@@ -1,0 +1,15 @@
+#userInput 
+{
+    width: 90%;
+}
+
+.chatbox{
+    margin: 0 auto;
+    width: 60%;
+    
+}
+
+#msg{
+    max-height: 20em;
+    overflow-y: auto;
+}

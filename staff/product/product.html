@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title> Listoa </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../../common/css/picnic.css">
+        <link rel="stylesheet" href="../../common/css/styles.css">
+        <link rel="stylesheet" href="product.css">
+    </head>
+    <body>
+        <div class="container">
+            <!-- Navigation Bar -->
+            <nav class="test">
+    
+                <!-- Logo -->
+                <a class="brand" href="">
+                    <img class="logo" src="../../common/img/logo.jpeg" width="100px;" >
+                </a> 
+            
+                <!-- Links -->
+                <div class="menu-center menu">
+                    <a href="base.html"> Home </a> 
+                    <a href="shop.html"> Shop </a>
+                </div>
+                
+                <div class="menu-icons menu" id="menuIcons">
+                   
+                </div>
+
+    
+            </nav>
+
+           
+        
+        <main>
+            <h1> Add Product </h1>
+            <input id="txtName" type="text" placeholder="Product Name">
+            <textarea id="txtDescription" placeholder="Description"></textarea>
+            <select id="selCategory">
+                
+            </select>
+            <select id="selSubCategory">
+                
+            </select>
+            <div style="width: 200px">
+                <label class="dropimage" id="dropImage">
+                    <input id="imgProduct" title="Drop image or click me" type="file">
+                </label>
+    
+            </div>
+            <button id="btnAdd"> Save </button>
+
+        </main>
+        </div>
+        <footer class="footer">
+            Copyright &copy; Listoa 2021
+        </footer>
+        
+        <script src="../../common/js/db.js"></script>
+        <script src="product.js"> </script>
+    </body>
+</html>
