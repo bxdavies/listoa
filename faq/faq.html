@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title> Listoa </title>
+        <title> Listoa - FAQ </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../common/css/picnic.css">
@@ -13,50 +12,57 @@
     </head>
     <body>
         <div class="container">
+
             <!-- Navigation Bar -->
-            <nav class="test">
+            <nav>
     
                 <!-- Logo -->
                 <a class="brand" href="">
                     <img class="logo" src="../common/img/logo.jpeg" width="100px;" >
                 </a> 
             
-                <!-- Links -->
+                <!-- Center Nav -->
                 <div class="menu-center menu">
-                    <a href="index.html"> Home </a> 
-                    <a href="shop/shop.html"> Shop </a>
+                    <a href="../index.html"> Home </a> 
+                    <a href="../shop/shop.html"> Shop </a>
+                    <a href="../wish-list/wish-list.html"> Wish List </a>
+                    <a href="../store-locations/store-locations.html"> Locations </a>
+                    <a href="faq.html"> FAQ </a>
                 </div>
                 
-                <div class="menu-icons menu" id="menuIcons">
-                   
+                <!-- Right Nav -->
+                <div class="menu-right menu">
+                   <a href="../staff/login/login.html"> Staff Area</a>
                 </div>
 
-    
             </nav>
 
-           
-        
-        <main>
-            <h1> FAQ </h1>
-            <div class="chatbox">
-                <article class="card">
-                    <header>
-                        <h3> Chat Box </h3>
-                    </header>
-                    <section class="content" id="msg">
-                        
-                    </section>
-                    <footer>
-                        <input id="userInput" type="text">
-                        <button id="userInputButton">Send</button>
-                    </footer>
-                </article>
-            </div>
-        </main>
+            <!-- Content -->
+            <main>
+                <h1> FAQ </h1>
+                <div class="chatbox">
+                    <article class="card">
+                        <header>
+                            <h3> Chat Box </h3>
+                        </header>
+                        <section class="content" id="msg">
+                            
+                        </section>
+                        <footer>
+                            <input id="userInput" type="text">
+                            <button id="userInputButton">Send</button>
+                        </footer>
+                    </article>
+                </div>
+            </main>
+
         </div>
+
+        <!-- Footer -->
         <footer class="footer">
             Copyright &copy; Listoa 2021
         </footer>
+        
         <script src="faq.js"></script>
     </body>
 </html>

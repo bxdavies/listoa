@@ -29,7 +29,7 @@ nav .menu-center
     text-align: center;
 }
 
-nav .menu-icons
+nav .menu-right
 {
     float: right
 }
@@ -39,6 +39,7 @@ nav a
     color: white;
     text-decoration: underline;
 }
+
 .container
 {
     position: relative;

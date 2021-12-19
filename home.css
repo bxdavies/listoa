@@ -1,7 +1,7 @@
-#btnAddToWishList{
+.btnAddToWishList{
     float: right;
 }
 
-#btnProductDetails{
+.btnProductDetails{
    float: left;
 }
