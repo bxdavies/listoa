@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../common/css/picnic.css">
         <link rel="stylesheet" href="../common/css/styles.css">
-        <link rel="stylesheet" href="product-details.css">
+        <link rel="stylesheet" href="locations.css">
     </head>
     <body>
         <div class="container">
@@ -27,7 +27,7 @@
                     <a href="../index.html"> Home </a> 
                     <a href="../shop/shop.html"> Shop </a>
                     <a href="../wish-list/wish-list.html"> Wish List </a>
-                    <a href="../locations/locations.html"> Locations </a>
+                    <a href="../store-locations/store-locations.html"> Locations </a>
                     <a href="../faq/faq.html"> FAQ </a>
                 </div>
                 
@@ -40,16 +40,9 @@
  
             <!-- Content -->
             <main>
-                <h1 id="hName"> Product Name </h1>
-
-                <table>
-                    <tr>
-                        <td id="tdImage"> </td>
-                        <td id="tdDescription"> </td>
-                    </tr>
-                </table>
-                    <button id="btnAddToWishList"> Add to wish list </button>
+                <h1> Locations </h1>
                 
+                <div id="map" style="height: 500px; width: auto;"> </div>
             </main>
 
         </div>
@@ -60,6 +53,7 @@
         </footer>
         
         <script src="../common/js/db.js"></script>
-        <script src="product-details.js"> </script>
+        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByMxiZDfuouP-xbbxypl3Tj-MtnbJLf9E&libraries=places"></script>
+        <script src="locations.js"> </script>
     </body>
 </html>
