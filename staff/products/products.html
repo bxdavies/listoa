@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../../common/css/picnic.css">
         <link rel="stylesheet" href="../../common/css/styles.css">
-        <link rel="stylesheet" href="product.css">
+        <link rel="stylesheet" href="products.css">
     </head>
     <body>
         <div class="container">
@@ -37,11 +37,12 @@
            
         
         <main>
-            <h1> Add Product </h1>
+            <h1 style="text-align:center;"> Product Management </h1>
+            <h2> Add Product </h2>
             <input id="txtName" type="text" placeholder="Product Name">
             <textarea id="txtDescription" placeholder="Description"></textarea>
             <input id="txtPrice" placeholder="Product Price" type="number" min="0.00" max="10000.00" step="0.01">
-            <select id="selCategory">
+            <select id="selAddProductCategory">
                 
             </select>
             <select id="selSubCategory">
@@ -55,6 +56,18 @@
             </div>
             <button id="btnAdd"> Save </button>
 
+            <h2> List Products </h2>
+            
+            <!-- Category Selction -->
+            <select id="selProductDisplayCategory"  class="selCategory">
+                <option value="All"> All </option>
+            </select>
+
+            <!-- Products -->
+            <div id="products"> 
+            
+            </div>
+
         </main>
         </div>
         <footer class="footer">
@@ -62,6 +75,6 @@
         </footer>
         
         <script src="../../common/js/db.js"></script>
-        <script src="product.js"> </script>
+        <script src="products.js"> </script>
     </body>
 </html>
