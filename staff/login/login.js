@@ -1,5 +1,5 @@
 document.getElementById('btnLogin').addEventListener('click', function(){
-    var id = parseInt(document.getElementById("txtEmailAddress").value);
+    var id = parseInt(document.getElementById("txtStaffID").value);
     var password = document.getElementById("txtPassword").value;
 
 
@@ -35,6 +35,13 @@ document.getElementById('btnLogin').addEventListener('click', function(){
 })
 
 function signup(){
+
+    var id =  prompt('Enter a staff ID');
+    var firstName = prompt('Enter first name');
+    var surname = prompt('Enter surname');
+    var password = prompt('Enter password');
+
+    id = parseInt(id)
     var staff = {
         "id": id,
         "forename": firstName,

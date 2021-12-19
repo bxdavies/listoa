@@ -4,13 +4,12 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title> Listoa </title>
+        <title> Listoa - Wish List</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../../common/css/picnic.css">
-        <link rel="stylesheet" href="../../common/css/simpleNotification.css">
-        <link rel="stylesheet" href="../../common/css/styles.css">
-        <link rel="stylesheet" href="login.css">
+        <link rel="stylesheet" href="../common/css/picnic.css">
+        <link rel="stylesheet" href="../common/css/styles.css">
+        <link rel="stylesheet" href="wish-list.css">
     </head>
     <body>
         <div class="container">
@@ -19,12 +18,12 @@
     
                 <!-- Logo -->
                 <a class="brand" href="">
-                    <img class="logo" src="../../common/img/logo.jpeg" width="100px;" >
+                    <img class="logo" src="../common/img/logo.jpeg" width="100px;" >
                 </a> 
             
                 <!-- Links -->
                 <div class="menu-center menu">
-                    <a href="index.html"> Home </a> 
+                    <a href="base.html"> Home </a> 
                     <a href="shop.html"> Shop </a>
                 </div>
                 
@@ -38,26 +37,29 @@
            
         
         <main>
+            <h1> Wish List</h1> 
             
-          
-            <div class="auth-container">
-                <h1 style="text-align:center;"> Login </h1>
-                <input type="email" id="txtStaffID" placeholder="Staff ID">
-                <input type="password" id="txtPassword" placeholder="Password">
-                <button id="btnLogin"> Login </button>
-            </div>
-          
+            <table>
+                <thead>
+                    <tr>
+                        <th>Quantity</th>
+                        <th> Product Image </th>
+                        <th> Product Name / Description </th>
+                        <th> Product Price </th>
+                        <th> Actions </th>
+                    </tr>
+                </thead>
+                <tbody id="wishList">
 
-              
+                </tbody>
+            </table>
         </main>
         </div>
         <footer class="footer">
             Copyright &copy; Listoa 2021
         </footer>
         
-        <script src="../../common/js/db.js"></script>
-        <script src="../../common/js/simpleNotification.js"></script>
-        <script src="login.js"></script>
-       
+        <script src="../common/js/db.js"></script>
+        <script src="wish-list.js"> </script>
     </body>
 </html>

@@ -9,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../common/css/picnic.css">
         <link rel="stylesheet" href="../common/css/styles.css">
+        <link rel="stylesheet" href="shop.css">
     </head>
     <body>
         <div class="container">
@@ -39,51 +40,16 @@
             <h1 style="text-align: center;"> Welcome to Listoa </h1>
             <h2 style="text-align: center;"> The best catalogue shop in Cheltenham</h2>
             
-            <div class="flex three">
-                <div>
-                    <article class="card">
-                        <header>
-                            <h3> Product 1 </h3>
-                        </header>
-                        <section class="content">
-                        
-                        </section>
-                        <footer>
-                            <button> Add to cart </button>
-                        </footer>
-                    </article>
-                </div>
+            <!-- Category Selction -->
+            <select id="selCategory">
+                <option value="All"> All </option>
+            </select>
 
-                <div>
-                    <article class="card">
-                        <header>
-                            <h3> Product 2 </h3>
-                        </header>
-                        <section class="content">
-                        
-                        </section>
-                        <footer>
-                            <button> Add to cart </button>
-                        </footer>
-                    </article>
-                </div>
-
-                <div>
-                    <article class="card">
-                        <header>
-                            <h3> Product 3 </h3>
-                        </header>
-                        <section class="content">
-                        
-                        </section>
-                        <footer>
-                            <button> Add to cart </button>
-                        </footer>
-                    </article>
-                </div>
+            <!-- Products -->
+            <div id="products"> 
+            
             </div>
-              
-              
+
         </main>
         </div>
         <footer class="footer">
@@ -91,5 +57,6 @@
         </footer>
         
         <script src="../common/js/db.js"></script>
+        <script src="shop.js"></script>
     </body>
 </html>

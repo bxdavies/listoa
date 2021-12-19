@@ -81,10 +81,12 @@ document.getElementById('btnAdd').addEventListener('click', () => {
     var category = document.getElementById('selCategory').value
     var subCategory = document.getElementById('selSubCategory').value
     var imageInput  = document.getElementById('imgProduct').files[0];
+    var price = document.getElementById('txtPrice').value
 
     var product = {
         name: name,
         description: description,
+        price: price,
         image: imageInput,
         category: category,
         sub_category: subCategory

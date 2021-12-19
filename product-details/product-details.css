@@ -1,0 +1,13 @@
+main{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.product-image{
+    height: 50vh;
+}
+
+.price{
+    font-weight: 700;
+    font-size: 2em;
+}
