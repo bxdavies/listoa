@@ -112,7 +112,7 @@ function initWishList() {
         }
 
         request.onerror = function() {
-            console.log("Error", request.error);
+            
         }
     }
 }

@@ -73,11 +73,11 @@ document.getElementById('selAddProductCategory').addEventListener('change', () =
         var categories = event.target.result;
         for (i in categories) 
         {
-            if (categories[i].name == document.getElementById('selCategory').value)
+            if (categories[i].name == document.getElementById('selAddProductCategory').value)
             {
                 for (j in categories[i].sub_categories)
                 {
-                    console.log(categories[i].sub_categories[j].name)
+                    
                     option = document.createElement('option')
                     
                     option.innerHTML = categories[i].sub_categories[j].name
@@ -109,9 +109,10 @@ document.getElementById('btnAdd').addEventListener('click', () => {
         sub_category: subCategory
     }
 
-    console.log(product)
+    
     var transaction = database.transaction(["products"], 'readwrite');
     transaction.objectStore("products").add(product);
+    window.location.reload()
 })
 
 function initProductsDisplay(){
@@ -168,7 +169,7 @@ function initProductsDisplay(){
         {
             for (let i = 0; i < numberOfProducts * 3; i += 3) {
 
-                console.log(i);
+                
 
                 // Create flexDiv
                 var flexDiv = document.createElement('div')
@@ -254,10 +255,10 @@ function createProductDiv(productsToDisplay, element){
 
 function initEditProductButton(){
     document.querySelectorAll('.btnEditProduct').forEach(item => {
-        console.log(item)
+        
         item.addEventListener('click', (event) => {
-            window.open(`../product-details/product-details.html?product=${event.target.value}`)
-            console.log(event.target.value)
+            window.open(`../edit-product/edit-product.html?product=${event.target.value}`)
+            
         })
     })
 }

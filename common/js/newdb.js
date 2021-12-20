@@ -12,7 +12,7 @@
 			IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
 		}
 		catch(e) {
-			console.log('Initial IndexedDB error: ' + e);
+			
 			failureCallback();
 		}
 		
@@ -26,7 +26,7 @@
 		//The onupgradeneeded property is triggered when a database 
 		//of a bigger version number than the existing stored database is loaded.
 		request.onupgradeneeded = function(event) {
-			console.log('onupgradeneeded method is invoked');
+			
 			db = event.target.result;
 			for(i=0; i < objectStores.length; i++) {
 				db.createObjectStore(objectStores[i], { keyPath: 'id', autoIncrement: true });
@@ -39,27 +39,27 @@
 		};
 
 		request.onerror = function(event) {
-			console.log('User don\'t allow IndexedDB to use offline storage.');
+			
 			failureCallback();
 		};
 	}
 
 	//Just print any indexeddb related error message in console window
 	function indexedDBError(event) {
-		console.log('An error occurred in IndexedDB', event);
+		
 	}
 	
 	//setDatabaseName sets the Database name and Object Stores required for a website
 	function setDatabaseName(dbName, objStores) {
 		databaseName = dbName;
 		objectStores = objStores;
-		console.log('Database : ', dbName);
+		
 	}
 	
 	//setCurrObjectStoreName set the current object store to store or retrieve data
 	function setCurrObjectStoreName(objStoreName) {
 		currObjectStoreName = objStoreName;
-		console.log('Current Object Store Name : ', currObjectStoreName);
+		
 	}
 
 	//selectAll retrieves all data from the current object store
@@ -102,7 +102,7 @@
 		transaction.onerror = indexedDBError;
 
 		transaction.oncomplete = function(event) {
-			console.log('Data was inserted succesfully');
+			
 			if(successCallback) {
 				successCallback(lastID);
 			}
@@ -122,7 +122,7 @@
 		};
 		transaction.onerror = indexedDBError;
 		transaction.oncomplete = function() {
-			console.log('Data with ' + id + ' was deleted successfully');
+			
 			if(successCallback) {
 				successCallback();
 			}
@@ -144,7 +144,7 @@
 		transaction.onerror = indexedDBError;
 
 		transaction.oncomplete = function(event) {
-			console.log('Data with ' + lastID + ' was deleted successfully');
+			
 			if(successCallback) {
 				successCallback(lastID);
 			}

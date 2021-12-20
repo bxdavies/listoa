@@ -3,6 +3,7 @@ window.addEventListener('load', () => {
         initMap();
     }, 1000)
 })
+
 function initMap()
 {   
     // Create Map
@@ -29,7 +30,7 @@ function initMap()
         // Loop through each location in the database
         for (i in locations) 
         {
-            console.log(locations[i])
+            
 
             // Create a marker for the location
             marker = new google.maps.Marker(

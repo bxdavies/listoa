@@ -28,7 +28,7 @@ document.getElementById('btnLogin').addEventListener('click', function(){
 
     }
     request.onerror = () => {
-        console.log(request.error)
+        
     }
     
 

@@ -19,7 +19,7 @@ function updateCategoryTable() {
     var transaction = database.transaction('categories', 'readonly'), objectStore, request;
 			
     transaction.onerror = function(event) {
-        console.log(event);
+        
     }
     objectStore = transaction.objectStore('categories');
     request = objectStore.getAll();
@@ -138,7 +138,7 @@ document.getElementById('btnAddSubCategory').addEventListener('click', () => {
               updateData.sub_categories = subCategories;
               const request = cursor.update(updateData);
               request.onsuccess = function() {
-                console.log('A better album year?');
+                
               };
             };
 

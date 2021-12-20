@@ -16,7 +16,7 @@ request.onsuccess = function(event)  {
 request.onupgradeneeded  = function(event) {
     database = event.target.result;
     // Let's create the object store for books
-    console.log('Upgrading DB')
+    
     database.createObjectStore("staff",  { 
         keyPath:"id"  });
     database.createObjectStore("categories", {

@@ -54,7 +54,7 @@ function initAutoComplete() {
 
 function initMap()
 {   
-    console.log(database)
+    
     // Create Map
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 13,
@@ -79,7 +79,7 @@ function initMap()
         // Loop through each location in the database
         for (i in locations) 
         {
-            console.log(locations[i])
+            
 
             // Create a marker for the location
             marker = new google.maps.Marker(

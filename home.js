@@ -102,10 +102,10 @@ function initRandomProducts(){
 
 function initProductDetailsButton(){
     document.querySelectorAll('.btnProductDetails').forEach(item => {
-        console.log(item)
+        
         item.addEventListener('click', (event) => {
             window.open(`product-details/product-details.html?product=${event.target.value}`)
-            console.log(event.target.value)
+            
         })
     })
 }
@@ -117,7 +117,7 @@ function initAddToWishListButton(){
             // Get Wish List from local storage
             var wishList = localStorage.getItem('wishList')
 
-            console.log(wishList)
+            
             // Check if Wish List is undefined
             if (wishList == undefined){
                 newWishList = []

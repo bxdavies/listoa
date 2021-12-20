@@ -46,7 +46,7 @@ function initProductsDisplay(){
         var numberOfProducts = Math.trunc(products.length/3);
         var remainderNumberOfProducts =  products.length % 3
 
-        console.log(numberOfProducts, remainderNumberOfProducts);
+        
 
         // Remainder 1
         if (remainderNumberOfProducts == 1){
@@ -91,7 +91,7 @@ function initProductsDisplay(){
         {
             for (let i = 0; i < numberOfProducts * 3; i += 3) {
 
-                console.log(i);
+                
 
                 // Create flexDiv
                 var flexDiv = document.createElement('div')
@@ -208,7 +208,7 @@ document.getElementById('selCategory').addEventListener('change', () => {
         var numberOfProducts = Math.trunc(productsToDisplay.length/3);
         var remainderNumberOfProducts =  productsToDisplay.length % 3
         
-        console.log(numberOfProducts, remainderNumberOfProducts)
+        
         
         // Remainder 1
         if (remainderNumberOfProducts == 1){
@@ -253,7 +253,7 @@ document.getElementById('selCategory').addEventListener('change', () => {
         {
             for (let i = 0; i < numberOfProducts * 3; i += 3) {
 
-                console.log(i);
+                
 
                 // Create flexDiv
                 var flexDiv = document.createElement('div')
@@ -275,10 +275,10 @@ document.getElementById('selCategory').addEventListener('change', () => {
 
 function initProductDetailsButton(){
     document.querySelectorAll('.btnProductDetails').forEach(item => {
-        console.log(item)
+        
         item.addEventListener('click', (event) => {
             window.open(`../product-details/product-details.html?product=${event.target.value}`)
-            console.log(event.target.value)
+            
         })
     })
 }
@@ -290,7 +290,7 @@ function initAddToWishListButton(){
             // Get Wish List from local storage
             var wishList = localStorage.getItem('wishList')
 
-            console.log(wishList)
+            
             // Check if Wish List is undefined
             if (wishList == undefined){
                 newWishList = []

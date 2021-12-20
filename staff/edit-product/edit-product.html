@@ -11,12 +11,8 @@
         <link rel="stylesheet" href="../../common/css/styles.css">
     </head>
     <body>
-
-      
-
-
         <div class="container">
-           
+            
             <!-- Navigation Bar -->
             <nav>
 
@@ -30,7 +26,7 @@
                     <a href="../home/home.html"> Home </a> 
                     <a href="../categories/categories.html"> Categories </a>
                     <a href="../products/products.html"> Products </a>
-                    <a href="locations.html"> Locations </a>
+                    <a href="../locations/locations.html"> Locations </a>
                 </div>
                 
                 <!-- Right Nav -->
@@ -40,35 +36,34 @@
 
             </nav>
 
-            <main>
-
-                <h2> Add Location </h2>
-
-                <label> Location Name </label>
-                <input type="text" id="txtLocationName"> 
-
-                <label> Location Address</label>
-                <input id="txtLocationAddress" type="text" size="50">
-
-                <span style="display: none;" id="lblLocationLat"> </span>
-                <span style="display: none;" id="lblLocationLng"> </span>
-
-                <button id="btnAddLocation"> Add Location </button>
+           
+        
+        <main>
+            <h1> Edit Product </h2>
+            <input id="txtName" type="text" placeholder="Product Name">
+            <textarea id="txtDescription" placeholder="Description"></textarea>
+            <input id="txtPrice" placeholder="Product Price" type="number" min="0.00" max="10000.00" step="0.01">
+            <select id="selCategory">
                 
-                <h2> Locations Map </h2>
-                <div id="map" style="height: 500px; width: auto;"> </div>
+            </select>
+            <select id="selSubCategory">
+                
+            </select>
+            <div style="width: 200px">
+                <label class="dropimage" id="dropImage">
+                    <input id="imgProduct" title="Drop image or click me" type="file">
+                </label>
+    
+            </div>
+            <button id="btnAdd"> Save </button>
 
-
-            </main>
-
+        </main>
         </div>
-
         <footer class="footer">
             Copyright &copy; Listoa 2021
         </footer>
-
-        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByMxiZDfuouP-xbbxypl3Tj-MtnbJLf9E&libraries=places"></script>
+        
         <script src="../../common/js/db.js"></script>
-        <script src="locations.js"> </script>
+        <script src="edit-product.js"> </script>
     </body>
 </html>
