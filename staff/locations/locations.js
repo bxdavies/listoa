@@ -1,8 +1,11 @@
+
+// Event Listener for Load
 window.addEventListener('load', () => {
     initAutoComplete();
     initMap();
 })
 
+// Event Listener for for Add Location Button
 document.getElementById('btnAddLocation').addEventListener('click', () => 
 {   
     // Get values from Fields
@@ -33,15 +36,19 @@ document.getElementById('btnAddLocation').addEventListener('click', () =>
     initMap();
 })
 
-
+// Initialize Auto Complete
 function initAutoComplete() {
 
+    // Get Address Text Box
     let txtAutoComplete = document.getElementById("txtLocationAddress")
 
+    // Create an Google Maps Autocomplete on the Text Box
     let autoComplete = new window.google.maps.places.Autocomplete(txtAutoComplete);
 
+    // Set component restrictions to UK only
     autoComplete.setComponentRestrictions({ "country": "uk" });
 
+    // Create Autocomplete Listener to Update Lat and Long Fields
     autoComplete.addListener("place_changed", () => 
     { 
         var place = autoComplete.getPlace();
@@ -51,7 +58,7 @@ function initAutoComplete() {
 
 }
 
-
+// Initialize the Map
 function initMap()
 {   
     
@@ -63,14 +70,11 @@ function initMap()
     });
 
     // Fetch all locations from the database and add them to the map
-
     var transaction = database.transaction('locations', 'readonly'), objectStore, request, results = [];
-			
-    // transaction.onerror = indexedDBError;
     objectStore = transaction.objectStore('locations');
     request = objectStore.getAll();
 
-    // request.onerror = indexedDBError;
+    // Request Success
     request.onsuccess = function(event) {
         var locations = event.target.result
         var infowindow = new google.maps.InfoWindow();
@@ -80,7 +84,6 @@ function initMap()
         for (i in locations) 
         {
             
-
             // Create a marker for the location
             marker = new google.maps.Marker(
                 {

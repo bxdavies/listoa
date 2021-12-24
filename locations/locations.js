@@ -17,11 +17,9 @@ function initMap()
 
     var transaction = database.transaction('locations', 'readonly'), objectStore, request, results = [];
 			
-    // transaction.onerror = indexedDBError;
     objectStore = transaction.objectStore('locations');
     request = objectStore.getAll();
 
-    // request.onerror = indexedDBError;
     request.onsuccess = function(event) {
         var locations = event.target.result
         var infowindow = new google.maps.InfoWindow();

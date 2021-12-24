@@ -1,9 +1,14 @@
+
+// Event Listener for Load
 window.addEventListener('load', () => {
+
+    // Delay the execution of the functions so database can be loaded
     setTimeout( () => { 
         initCategoryDropDown();
         initProductsDisplay();
     }, 1000);
 
+    // Delay the execution of the functions so products can be loaded
     setTimeout( () => {
         initEditProductButton();
         initDeleteProductButton();
@@ -11,6 +16,7 @@ window.addEventListener('load', () => {
     
 })
 
+// Event Listener for Image Upload 
 document.getElementById('imgProduct').addEventListener('change', (e) => {
     var inputfile = this, reader = new FileReader();
     reader.onloadend = function(){
@@ -19,70 +25,78 @@ document.getElementById('imgProduct').addEventListener('change', (e) => {
     reader.readAsDataURL(e.target.files[0]);
 })
 
+// Initialize the Category Drop Down
 function initCategoryDropDown(){
-    		
+    
+    // Get the categories from the database
     var transaction = database.transaction('categories', 'readonly'), objectStore, request, results = [];
-
-    // transaction.onerror = indexedDBError;
     objectStore = transaction.objectStore('categories');
     request = objectStore.getAll();
 
-    // request.onerror = indexedDBError;
+    // Request Success 
     request.onsuccess = function(event) {
         var categories = event.target.result;
         for (i in categories) 
         {
+            // Create option for Add Product Category Drop Down
             optAddProductCategory = document.createElement('option')
 
+            // Set option value and name
             optAddProductCategory.innerHTML = categories[i].name;
             optAddProductCategory.value = categories[i].name;
 
-
+            // Add option to the drop down
             document.getElementById('selAddProductCategory').append(optAddProductCategory)
 
+            // Create option for Display Product Category Drop Down
             optProductDisplayCategory = document.createElement('option')
 
+            // Set option value and name
             optProductDisplayCategory.innerHTML = categories[i].name;
             optProductDisplayCategory.value = categories[i].name;
 
+            // Add option to the drop down
             document.getElementById('selProductDisplayCategory').append(optProductDisplayCategory)
-
-
-
         }
     }
 }
 
+// Event Listener for Category Change
 document.getElementById('selAddProductCategory').addEventListener('change', () => {
 
     // Remove all options from select
     selSubCategory = document.getElementById('selSubCategory')
     while (selSubCategory.firstChild)
     {
-    selSubCategory.removeChild(selSubCategory.firstChild)
+        selSubCategory.removeChild(selSubCategory.firstChild)
     }
 
+    // Get Categories from Database
     var transaction = database.transaction('categories', 'readonly'), objectStore, request, results = [];
-
-    // transaction.onerror = indexedDBError;
     objectStore = transaction.objectStore('categories');
     request = objectStore.getAll();
 
-    // request.onerror = indexedDBError;
+    // Request Success
     request.onsuccess = function(event) {
         var categories = event.target.result;
+
+        // Loop through categories
         for (i in categories) 
         {
+            // If category matches selected drop down
             if (categories[i].name == document.getElementById('selAddProductCategory').value)
             {
+                // Loop through sub categories
                 for (j in categories[i].sub_categories)
                 {
-                    
+                    // Create option
                     option = document.createElement('option')
                     
+                    // Set option value and name
                     option.innerHTML = categories[i].sub_categories[j].name
                     option.value = categories[i].sub_categories[j].name;
-    
+                    
+                    // Add option to the drop down
                     document.getElementById('selSubCategory').appendChild(option)
                 }
             }
@@ -91,8 +105,10 @@ document.getElementById('selAddProductCategory').addEventListener('change', () =
     }
 })
 
+// Event Listener for add button
 document.getElementById('btnAdd').addEventListener('click', () => {
 
+    // Get Values from HTML Elements 
     var name = document.getElementById('txtName').value
     var description = document.getElementById('txtDescription').value
     var category = document.getElementById('selAddProductCategory').value
@@ -100,6 +116,7 @@ document.getElementById('btnAdd').addEventListener('click', () => {
     var imageInput  = document.getElementById('imgProduct').files[0];
     var price = document.getElementById('txtPrice').value
 
+    // Create product object
     var product = {
         name: name,
         description: description,
@@ -109,20 +126,28 @@ document.getElementById('btnAdd').addEventListener('click', () => {
         sub_category: subCategory
     }
 
-    
+    // Add product to the database
     var transaction = database.transaction(["products"], 'readwrite');
     transaction.objectStore("products").add(product);
+
+    // Notify User and reload the page
+    alert('Product Added!')
     window.location.reload()
 })
 
+// Initialize the Products Display
 function initProductsDisplay(){
+
+    // Get Products from the Database
     var transaction = database.transaction('products', 'readonly'), objectStore, request, results = [];
     objectStore = transaction.objectStore('products');
     request = objectStore.getAll();
 
+    // Request Success
     request.onsuccess = function(event) {
         var products = event.target.result;
 
+        // Get number of products and the remainder 
         var numberOfProducts = Math.trunc(products.length/3);
         var remainderNumberOfProducts =  products.length % 3
 
@@ -164,12 +189,10 @@ function initProductsDisplay(){
 
         }
 
-
+        // Then for every product after that create a row of three products
         if (numberOfProducts != 0)
         {
             for (let i = 0; i < numberOfProducts * 3; i += 3) {
-
-                
 
                 // Create flexDiv
                 var flexDiv = document.createElement('div')
@@ -180,13 +203,14 @@ function initProductsDisplay(){
                 flexDiv.append(createProductDiv(products, i+1))
                 flexDiv.append(createProductDiv(products, i+2))
 
-
+                // Add flexDiv to products DIV
                 document.getElementById('products').append(flexDiv)
             }
         }
     }
 }
 
+// Function to Create Product DIV
 function createProductDiv(productsToDisplay, element){
 
     // Create Product Elements
@@ -252,23 +276,37 @@ function createProductDiv(productsToDisplay, element){
     return div;
 
 }
-
+// Initialize the Edit Product Button
 function initEditProductButton(){
+
+    // Loop through all elements with the class btnEditProduct
     document.querySelectorAll('.btnEditProduct').forEach(item => {
         
+        // Event Listener for Edit Button Click
         item.addEventListener('click', (event) => {
+
+            // Open a new Tab with the parameter of the product
             window.open(`../edit-product/edit-product.html?product=${event.target.value}`)
             
         })
     })
 }
 
+// Initialize the Delete Product Button
 function initDeleteProductButton(){
+
+    // Loop through all elements with the class btnDeleteProduct
     document.querySelectorAll('.btnDeleteProduct').forEach(item => {
+
+        // Event Listener for Delete Button Click
         item.addEventListener('click', (event) => {
+
+            // Delete Product from the database
             var transaction = database.transaction('products', 'readwrite'), objectStore;
             objectStore = transaction.objectStore('products');
             objectStore.delete(event.target.value)
+
+            // Reload the page
             window.location.reload();
         })
     })
