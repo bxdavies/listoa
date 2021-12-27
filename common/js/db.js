@@ -1,38 +1,63 @@
+
+// Global Variable Database accessed in other files 
 var database;
 
-var request = indexedDB.open("listoa");
+// Event Listener for Load
+window.addEventListener('load', () => {
 
+    // Delay the execution of the functions so DOM can load fully
+    setTimeout(() => {
+        checkIndexDBSupport();
+    }, 500)
+})
 
-request.onerror = function(event)  {
-    alert('Error!')
-    // Do something with request.errorCode!
-}; 
+// Check if the browser supports indexedDB
+function checkIndexDBSupport(){
+    if(window.chrome){
 
-request.onsuccess = function(event)  { 
-    database = event.target.result;
-    return database
-} 
+    } else {
+        alert("Please use a chromium based web browser as in my testing IndexedDB does not work correctly on other non chromium browsers")
+        window.location.replace('http://www.google.com')
+    }
+    if (indexedDB) {
 
-request.onupgradeneeded  = function(event) {
-    database = event.target.result;
-    // Let's create the object store for books
-    
-    database.createObjectStore("staff",  { 
-        keyPath:"id"  });
-    database.createObjectStore("categories", {
-        keyPath:"name"
-    })
-    database.createObjectStore("products",{
-        keyPath:"name"
-    })
-    database.createObjectStore("locations", {
-        keyPath:"name"
-    })
-    return database
+    } else {
+        alert("Your browser doesn't support a stable version of IndexedDB. This website will not work without it.");
+        window.location.replace('http://www.google.com')
+    }
+    initDatabase();
+
 }
 
+function initDatabase(){
+    var request = indexedDB.open("listoa");
 
+    // Request Error
+    request.onerror = function(event)  {
+        alert('DB Error!')
+    }; 
 
+    // Request Success
+    request.onsuccess = function(event)  { 
+        database = event.target.result;
+        return database
+    } 
 
-
-
+    // Database Upgrade Needed
+    request.onupgradeneeded  = function(event) {
+        database = event.target.result;
+        
+        database.createObjectStore("staff",  { 
+            keyPath:"id"  });
+        database.createObjectStore("categories", {
+            keyPath:"name"
+        })
+        database.createObjectStore("products",{
+            keyPath:"name"
+        })
+        database.createObjectStore("locations", {
+            keyPath:"name"
+        })
+        return database
+    }
+}

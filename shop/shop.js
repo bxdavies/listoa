@@ -1,10 +1,15 @@
+
+// Event Listener for Load
 window.addEventListener('load', () => {
+
+    // Delay the execution of the functions so database can be loaded
     setTimeout(function() { 
         initCategoryDropDown();
         initProductsDisplay();
         
     }, 1000);
 
+    // Delay the execution of the functions so products can be loaded
     setTimeout(function() {
         initProductDetailsButton();
         initAddToWishListButton();
@@ -12,41 +17,49 @@ window.addEventListener('load', () => {
     
 })
 
+// Initialize the Category Drop Down
 function initCategoryDropDown(){
-    		
+    
+    // Get categories from the database
     var transaction = database.transaction('categories', 'readonly'), objectStore, request, results = [];
-
-    // transaction.onerror = indexedDBError;
     objectStore = transaction.objectStore('categories');
     request = objectStore.getAll();
 
-    // request.onerror = indexedDBError;
+    // Request Success
     request.onsuccess = function(event) {
         var categories = event.target.result;
+
+        // Loop through the categories
         for (i in categories) 
-        {
+        {   
+            // Create a option element
             option = document.createElement('option')
 
+            // Set option value and name
             option.innerHTML = categories[i].name;
             option.value = categories[i].name;
 
+            // Add option to the drop down
             document.getElementById('selCategory').appendChild(option)
         }
     }
 }
 
+// Initialize Products Display
 function initProductsDisplay(){
+
+    // Get products from the database
     var transaction = database.transaction('products', 'readonly'), objectStore, request, results = [];
     objectStore = transaction.objectStore('products');
     request = objectStore.getAll();
 
+    // Request Success
     request.onsuccess = function(event) {
         var products = event.target.result;
 
+        // Try and divide the number of products to display by 3 if we end up with a remainder then assign to a variable
         var numberOfProducts = Math.trunc(products.length/3);
         var remainderNumberOfProducts =  products.length % 3
-
-        
 
         // Remainder 1
         if (remainderNumberOfProducts == 1){
@@ -86,12 +99,10 @@ function initProductsDisplay(){
 
         }
 
-
+        // For any non remaining products create a div of three products
         if (numberOfProducts != 0)
         {
             for (let i = 0; i < numberOfProducts * 3; i += 3) {
-
-                
 
                 // Create flexDiv
                 var flexDiv = document.createElement('div')
@@ -102,13 +113,13 @@ function initProductsDisplay(){
                 flexDiv.append(createProductDiv(products, i+1))
                 flexDiv.append(createProductDiv(products, i+2))
 
-
                 document.getElementById('products').append(flexDiv)
             }
         }
     }
 }
 
+// Create Product DIV
 function createProductDiv(productsToDisplay, element){
 
     // Create Product Elements
@@ -175,6 +186,7 @@ function createProductDiv(productsToDisplay, element){
 
 }
 
+//  Event Listener for Category Change
 document.getElementById('selCategory').addEventListener('change', () => {
 
     parent = document.getElementById('products')
@@ -186,6 +198,7 @@ document.getElementById('selCategory').addEventListener('change', () => {
 
     var selectedCategory = document.getElementById('selCategory').value;
 
+    // Get products from the database
     var transaction = database.transaction('products', 'readonly'), objectStore, request, results = [];
     objectStore = transaction.objectStore('products');
     request = objectStore.getAll();
@@ -204,11 +217,9 @@ document.getElementById('selCategory').addEventListener('change', () => {
             }
         }
 
-        // Try and devide the numer of products to display by 3 if we end up with a remainder then assign to a vairable
+        // Try and divide the number of products to display by 3 if we end up with a remainder then assign to a variable
         var numberOfProducts = Math.trunc(productsToDisplay.length/3);
         var remainderNumberOfProducts =  productsToDisplay.length % 3
-        
-        
         
         // Remainder 1
         if (remainderNumberOfProducts == 1){
@@ -248,12 +259,10 @@ document.getElementById('selCategory').addEventListener('change', () => {
 
         }
 
-
+        // For any non remaining products create a div of three products
         if (numberOfProducts != 0)
         {
             for (let i = 0; i < numberOfProducts * 3; i += 3) {
-
-                
 
                 // Create flexDiv
                 var flexDiv = document.createElement('div')
@@ -264,7 +273,6 @@ document.getElementById('selCategory').addEventListener('change', () => {
                 flexDiv.append(createProductDiv(productsToDisplay, i+1))
                 flexDiv.append(createProductDiv(productsToDisplay, i+2))
 
-
                 document.getElementById('products').append(flexDiv)
             }
         }
@@ -273,18 +281,29 @@ document.getElementById('selCategory').addEventListener('change', () => {
 
 });
 
+// Initialize Product Details Button
 function initProductDetailsButton(){
+
+    // Loop through all elements with the class btnProductDetails
     document.querySelectorAll('.btnProductDetails').forEach(item => {
         
+        // Event Listener for Product Details Button Click
         item.addEventListener('click', (event) => {
+
+            // Redirect to Product Details Page with product as a parameter
             window.open(`../product-details/product-details.html?product=${event.target.value}`)
             
         })
     })
 }
 
+// Initialize the Add to Wish List Button 
 function initAddToWishListButton(){
+
+    // Loop through all elements with the class btnAddToWishList
     document.querySelectorAll('.btnAddToWishList').forEach(item => {
+
+        // Event Listener for Add to Wish List Button Click
         item.addEventListener('click', (event) => {
 
             // Get Wish List from local storage
@@ -302,6 +321,7 @@ function initAddToWishListButton(){
                 newWishList.push(event.target.value)
             }
 
+            // Update wish list in local storage
             localStorage.setItem('wishList', newWishList)
         })
     })

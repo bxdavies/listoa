@@ -1,3 +1,5 @@
+
+// Event listener for enter key press to execute the same code as button press
 document.getElementById('userInput').addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {
         event.preventDefault();
@@ -5,6 +7,7 @@ document.getElementById('userInput').addEventListener('keyup', (event) => {
     }
 })
 
+// Event listener for User Input Button Clicked
 document.getElementById('userInputButton').addEventListener('click', (event) => {
 
     // Assign User Input to variable

@@ -1,8 +1,13 @@
+
+// Event Listener for Load
 window.addEventListener('load', () => {
+
+    // Delay the execution of the functions so database can be loaded
     setTimeout(() => { 
         initRandomProducts();
     }, 1000);
-
+    
+    // Delay the execution of the functions so products can be loaded
     setTimeout(() => {
         initAddToWishListButton();
         initProductDetailsButton();
@@ -10,6 +15,7 @@ window.addEventListener('load', () => {
     
 })
 
+// Create Product DIV
 function createProductDiv(productsToDisplay, element){
 
     // Create Product Elements
@@ -74,14 +80,19 @@ function createProductDiv(productsToDisplay, element){
 
 }
 
+// Initialize Random Products To Display 
 function initRandomProducts(){
+
+    // Get all products from the database
     var transaction = database.transaction('products', 'readonly'), objectStore, request, results = [];
     objectStore = transaction.objectStore('products');
     request = objectStore.getAll();
 
+    // Request Success 
     request.onsuccess = function(event) {
         var products = event.target.result;
         
+        // Generate three random numbers 
         var elem1 = Math.floor(Math.random()*products.length);
         var elem2 = Math.floor(Math.random()*products.length);
         var elem3 = Math.floor(Math.random()*products.length);
@@ -100,18 +111,29 @@ function initRandomProducts(){
     }
 }
 
+// Initialize Product Details Button
 function initProductDetailsButton(){
+
+    // Loop through all elements with the class btnProductDetails
     document.querySelectorAll('.btnProductDetails').forEach(item => {
         
+        // Event Listener for Product Details Button Click
         item.addEventListener('click', (event) => {
+
+            // Redirect to Product Details Page with product as a parameter
             window.open(`product-details/product-details.html?product=${event.target.value}`)
             
         })
     })
 }
 
+// Initialize the Add to Wish List Button 
 function initAddToWishListButton(){
+
+    // Loop through all elements with the class btnAddToWishList
     document.querySelectorAll('.btnAddToWishList').forEach(item => {
+        
+        // Event Listener for Add to Wish List Button Click
         item.addEventListener('click', (event) => {
 
             // Get Wish List from local storage
@@ -129,6 +151,7 @@ function initAddToWishListButton(){
                 newWishList.push(event.target.value)
             }
 
+            // Update wish list in local storage
             localStorage.setItem('wishList', newWishList)
         })
     })

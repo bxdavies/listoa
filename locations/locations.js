@@ -1,9 +1,14 @@
+
+// Event Listener for Load
 window.addEventListener('load', () => {
+
+    // Delay the execution of the functions so DOM can load fully
     setTimeout(() => {
         initMap();
     }, 1000)
 })
 
+// Initialize the the Map
 function initMap()
 {   
     // Create Map
@@ -14,12 +19,11 @@ function initMap()
     });
 
     // Fetch all locations from the database and add them to the map
-
     var transaction = database.transaction('locations', 'readonly'), objectStore, request, results = [];
-			
     objectStore = transaction.objectStore('locations');
     request = objectStore.getAll();
 
+    // Request Success
     request.onsuccess = function(event) {
         var locations = event.target.result
         var infowindow = new google.maps.InfoWindow();
@@ -29,7 +33,6 @@ function initMap()
         for (i in locations) 
         {
             
-
             // Create a marker for the location
             marker = new google.maps.Marker(
                 {
@@ -48,7 +51,6 @@ function initMap()
                 }
 
             })(marker, i));
-
 
         }
     }
