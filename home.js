@@ -42,7 +42,7 @@ function createProductDiv(productsToDisplay, element){
     productDetails.className = 'btnProductDetails'
     productDetails.value = productsToDisplay[element].name
     addToWishList.value = productsToDisplay[element].name
-    addToWishList.innerHTML = 'Add to Whish List'
+    addToWishList.innerHTML = 'Add to Wish List'
     addToWishList.className = 'btnAddToWishList'
     addToWishList.value = productsToDisplay[element].name
 
