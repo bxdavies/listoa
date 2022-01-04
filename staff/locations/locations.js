@@ -104,18 +104,17 @@ function initMap()
 
                     // Create Paragraph and Link
                     var pName = document.createElement('p');
-                    var aDelete =document.createElement('a')
+                    var btnDelete =document.createElement('button')
 
                     // Set the name
                     pName.innerHTML = locations[i].name
 
                     // Set parameters of the link
-                    aDelete.innerHTML = 'Delete Location'
-                    aDelete.href = '#'
-                    aDelete.value = locations[i].name
+                    btnDelete.innerHTML = 'Delete Location'
+                    btnDelete.value = locations[i].name
 
                     // Create an event listener on the link
-                    aDelete.addEventListener('click', (event) => {
+                    btnDelete.addEventListener('click', (event) => {
 
                         // Delete Location from the database
                         var transaction = database.transaction('locations', 'readwrite'), objectStore;
@@ -129,7 +128,7 @@ function initMap()
                     
                     // Add Paragraph and Link to Content Div
                     content.append(pName)
-                    content.append(aDelete)
+                    content.append(btnDelete)
 
                     infowindow.setContent(content);
                     infowindow.open(map, marker);
