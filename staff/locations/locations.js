@@ -1,8 +1,10 @@
 
 // Event Listener for Load
 window.addEventListener('load', () => {
-    initAutoComplete();
-    initMap();
+    setTimeout(() => { 
+        initAutoComplete();
+        initMap();
+    }, 1000);
 })
 
 // Event Listener for for Add Location Button
@@ -97,7 +99,39 @@ function initMap()
             {
                 return function () 
                 {
-                    infowindow.setContent(locations[i].name)
+                    // Create content DIV
+                    var content = document.createElement('div');
+
+                    // Create Paragraph and Link
+                    var pName = document.createElement('p');
+                    var aDelete =document.createElement('a')
+
+                    // Set the name
+                    pName.innerHTML = locations[i].name
+
+                    // Set parameters of the link
+                    aDelete.innerHTML = 'Delete Location'
+                    aDelete.href = '#'
+                    aDelete.value = locations[i].name
+
+                    // Create an event listener on the link
+                    aDelete.addEventListener('click', (event) => {
+
+                        // Delete Location from the database
+                        var transaction = database.transaction('locations', 'readwrite'), objectStore;
+                        objectStore = transaction.objectStore('locations');
+                        objectStore.delete(event.target.value)
+
+                        // Alert User and Reload the Page
+                        alert('Location Deleted!')
+                        window.location.reload();
+                    })
+                    
+                    // Add Paragraph and Link to Content Div
+                    content.append(pName)
+                    content.append(aDelete)
+
+                    infowindow.setContent(content);
                     infowindow.open(map, marker);
                 }
 
