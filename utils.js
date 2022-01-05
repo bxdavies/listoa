@@ -1,4 +1,4 @@
-import { exportToJson } from 'common/js/idb-backup-and-restore.js'
+import { exportToJson } from '.common/js/idb-backup-and-restore.js'
 function test(){
     exportToJson(database)
         .then(result => {
