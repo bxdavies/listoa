@@ -18,6 +18,8 @@ function showProduct(){
 
         var product = request.result;
 
+        document.getElementById('hName').innerHTML = product.name
+        
         var imgProduct = document.createElement('img')
         imgProduct.className = 'product-image'
 
