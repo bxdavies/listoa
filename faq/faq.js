@@ -47,4 +47,7 @@ document.getElementById('userInputButton').addEventListener('click', (event) => 
     // Scroll to the bottom of the message box 
     document.getElementById('msg').scrollTop = document.getElementById('msg').scrollHeight;
 
+    // Empty the message box
+    userInput = '';
+
 })
