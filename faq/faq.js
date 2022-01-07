@@ -11,15 +11,15 @@ document.getElementById('userInput').addEventListener('keyup', (event) => {
 document.getElementById('userInputButton').addEventListener('click', (event) => {
 
     // Assign User Input to variable
-    userInput = document.getElementById('userInput').value
+    var userInput = document.getElementById('userInput').value
 
     // Add the User Input to a Paragraph and add that to Message Box
-    p = document.createElement('p');
+    var p = document.createElement('p');
     p.innerHTML = 'User: ' + userInput;
     document.getElementById('msg').appendChild(p)
 
     // Dictionary of Responses
-    responses = {
+    var responses = {
         "hello": "Hello, How can I assist you today?",
         "speak with a human": "Sorry, no Humans are available right now",
         "i hate you": "Sorry, Did I do something wrong?",
@@ -30,7 +30,7 @@ document.getElementById('userInputButton').addEventListener('click', (event) => 
     }
 
     // Get the response from the Dictionary
-    response = responses[userInput.toLowerCase()]
+    var response = responses[userInput.toLowerCase()]
 
     // If the response is undefined then set the response
     if (response === undefined)
@@ -39,7 +39,7 @@ document.getElementById('userInputButton').addEventListener('click', (event) => 
     }
 
     // Add the response to a Paragraph and add that to the Message Box
-    p = document.createElement('p');
+    var p = document.createElement('p');
     p.innerHTML = 'Bot: ' +  response;
     p.style.textAlign = 'right'
     document.getElementById('msg').appendChild(p)
@@ -48,6 +48,6 @@ document.getElementById('userInputButton').addEventListener('click', (event) => 
     document.getElementById('msg').scrollTop = document.getElementById('msg').scrollHeight;
 
     // Empty the message box
-    userInput = '';
+    document.getElementById('userInput').value = ''
 
 })
