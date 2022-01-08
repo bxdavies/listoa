@@ -278,6 +278,7 @@ document.getElementById('selCategory').addEventListener('change', () => {
         }
     }
 
+    console.log('Fixing Buttons')
     initProductDetailsButton();
     initAddToWishListButton();
 
@@ -288,7 +289,7 @@ function initProductDetailsButton(){
 
     // Loop through all elements with the class btnProductDetails
     document.querySelectorAll('.btnProductDetails').forEach(item => {
-        
+        console.log(item)
         // Event Listener for Product Details Button Click
         item.addEventListener('click', (event) => {
 
