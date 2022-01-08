@@ -277,7 +277,8 @@ document.getElementById('selCategory').addEventListener('change', () => {
             }
         }
     }
-
+    
+    // Re Initialize Product Details Button and Add to Wish List Button
     setTimeout(() => {
         initProductDetailsButton();
         initAddToWishListButton();
