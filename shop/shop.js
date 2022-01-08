@@ -278,6 +278,8 @@ document.getElementById('selCategory').addEventListener('change', () => {
         }
     }
 
+    initProductDetailsButton();
+    initAddToWishListButton();
 
 });
 
