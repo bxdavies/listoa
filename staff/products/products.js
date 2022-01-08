@@ -209,6 +209,105 @@ function initProductsDisplay(){
         }
     }
 }
+//  Event Listener for Category Change
+document.getElementById('selProductDisplayCategory').addEventListener('change', () => {
+
+    parent = document.getElementById('products')
+
+    // Empty Products DIV
+    while (parent.firstChild){
+        parent.firstChild.remove();
+    }
+
+    var selectedCategory = document.getElementById('selProductDisplayCategory').value;
+
+    // Get products from the database
+    var transaction = database.transaction('products', 'readonly'), objectStore, request, results = [];
+    objectStore = transaction.objectStore('products');
+    request = objectStore.getAll();
+
+    request.onsuccess = function(event) {
+        var products = event.target.result;
+
+        var productsToDisplay = []
+
+        // Create the array productsToDisplay which includes all products in the selected category
+        for (i in products)
+        {
+            if (products[i].category == selectedCategory)
+            {
+                productsToDisplay.push(products[i])
+            }
+        }
+
+        // Try and divide the number of products to display by 3 if we end up with a remainder then assign to a variable
+        var numberOfProducts = Math.trunc(productsToDisplay.length/3);
+        var remainderNumberOfProducts =  productsToDisplay.length % 3
+        
+        // Remainder 1
+        if (remainderNumberOfProducts == 1){
+
+            // Get last array element
+            var arrayElementLast = productsToDisplay.length - 1
+            
+            // Create flexDiv
+            var flexDiv = document.createElement('div')
+            flexDiv.className = "flex one"
+
+            // Add product DIV to flexDiv
+            flexDiv.append(createProductDiv(productsToDisplay, arrayElementLast))
+            
+            // Add flexDiv to products DIV
+            document.getElementById('products').append(flexDiv)
+
+        }
+
+        // Remainder 2
+        else if (remainderNumberOfProducts == 2){
+
+            // Get the last array element and the second to last array element
+            var arrayElementLast =  productsToDisplay.length - 1
+            var arrayElementSecondLast =  productsToDisplay.length - 2
+
+            // Create flexDiv
+            var flexDiv = document.createElement('div')
+            flexDiv.className = "flex two"
+            
+            // Add products DIV to flexDiv
+            flexDiv.append(createProductDiv(productsToDisplay, arrayElementLast))
+            flexDiv.append(createProductDiv(productsToDisplay, arrayElementSecondLast))
+            
+            // Add flexDiv to products DIV
+            document.getElementById('products').append(flexDiv)
+
+        }
+
+        // For any non remaining products create a div of three products
+        if (numberOfProducts != 0)
+        {
+            for (let i = 0; i < numberOfProducts * 3; i += 3) {
+
+                // Create flexDiv
+                var flexDiv = document.createElement('div')
+                flexDiv.className = "flex three"
+
+                // Add products DIV to flexDiv
+                flexDiv.append(createProductDiv(productsToDisplay, i))
+                flexDiv.append(createProductDiv(productsToDisplay, i+1))
+                flexDiv.append(createProductDiv(productsToDisplay, i+2))
+
+                document.getElementById('products').append(flexDiv)
+            }
+        }
+    }
+
+    // Re ininitilize Edit Product Button and Delete Product Button
+    setTimeout(() => {
+        initProductDetailsButton();
+        initAddToWishListButton();
+    }, 1000);
+
+});
 
 // Function to Create Product DIV
 function createProductDiv(productsToDisplay, element){
