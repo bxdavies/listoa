@@ -278,9 +278,10 @@ document.getElementById('selCategory').addEventListener('change', () => {
         }
     }
 
-    console.log('Fixing Buttons')
-    initProductDetailsButton();
-    initAddToWishListButton();
+    setTimeout(() => {
+        initProductDetailsButton();
+        initAddToWishListButton();
+    }, 1000);
 
 });
 
