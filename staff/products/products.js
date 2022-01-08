@@ -303,8 +303,8 @@ document.getElementById('selProductDisplayCategory').addEventListener('change', 
 
     // Re ininitilize Edit Product Button and Delete Product Button
     setTimeout(() => {
-        initProductDetailsButton();
-        initAddToWishListButton();
+        initEditProductButton();
+        initEditProductButton();
     }, 1000);
 
 });
